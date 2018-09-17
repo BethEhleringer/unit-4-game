@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="pdq"></h1>
+  <script>
+      /*
+//Shuffle an array in random order. This is known as the "Fisher Yates Shuffle" and is found in several places on the internet.
+    Array.prototype.shuffle = function() {
+    var input = this;
+     
+    for (var i = input.length-1; i >=0; i--) {
+     
+        var randomIndex = Math.floor(Math.random()*(i+1)); 
+        var itemAtIndex = input[randomIndex]; 
+         
+        input[randomIndex] = input[i]; 
+        input[i] = itemAtIndex;
+    }
+    return input;
+    $("#xyz").text(input)
+    
+}
+
+var tempArray = [ "ruby", "sapphire", "diamond", "quartz", "coal" ]
+tempArray.shuffle();
+console.log(tempArray[0]) */
+
+//Shuffle an array in random order. This is known as the "Fisher Yates Shuffle" and is found in several places on the internet.
+Array.prototype.shuffle = function() {
+    var input = this;
+     
+    for (var i = input.length-1; i >=0; i--) {
+     
+        var randomIndex = Math.floor(Math.random()*(i+1)); 
+        var itemAtIndex = input[randomIndex]; 
+         
+        input[randomIndex] = input[i]; 
+        input[i] = itemAtIndex;
+    }
+    return input;
+    
+}
+
+var tempArray = [1, 2, 3, 4, 5 ]
+tempArray.shuffle();
+console.log(tempArray[0])
+ 
+// and the result is...
+alert(tempArray);  
+console.log(tempArray) ; 
+var numbers = [1, 100, 600, 700, 8, 16];
+numbers.shuffle();
+console.log(numbers[0], numbers[2]);
+var crystalValue1 = numbers[0];
+var crystalValue2 = numbers[1];
+var crystalValue3 = numbers[2];
+
+
+    //get random number for each crystal
+
+function getRandomNumbers() {
+  var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  for (var i = 0; i < 6; i++) {
+      numbers[Math.floor(Math.random() * 9)];
+  }
+return numbers;
+console.log("Numbers are " + numbers)
+}
+
+    
+    </script>  
+</body>
+</html>

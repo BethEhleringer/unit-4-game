@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+
+    <div id="stone"></div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+        
+        var ruby = {
+            name: ruby,
+            color: "red",
+            value: Math.floor(Math.random() * 10)
+            
+        }
+
+        var sapphire = {
+            color: "blue",
+            value: 6,
+            image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Geschliffener_blauer_Saphir.jpg/170px-Geschliffener_blauer_Saphir.jpg"
+        }
+
+        var diamond = {
+            color: "white",
+            value: 20,
+            picture: "diamond.jpg"
+        }
+
+        var topaz = {
+            color: "yellow",
+            value: 2
+        }
+
+        var emerald = {
+            color: "green",
+            value: 7
+        }
+
+       var rocks = [ruby, sapphire, diamond, topaz, emerald]
+
+        function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+console.log(ruby.value);
+$("#stone").html("<img src= '" + diamond.picture + " '/>")
+console.log(rocks);
+
+var tempRockArray = shuffle(rocks);
+console.log(tempRockArray[0], tempRockArray[1]);
+
+        console.log(ruby.color)
+        console.log(rocks[1])
+        document.write(rocks[1].color)
+        
+});
+        </script>
+</body>
+</html>
