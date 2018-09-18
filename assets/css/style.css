@@ -1,0 +1,54 @@
+body {
+    font-family: 'Princess Sofia', cursive;
+    background-image: url("../../assets/images/AdobeStock_137874641.jpg");
+    
+}
+
+h1, h2, h3, h4 {
+    color: #4c8cf5;
+    font-family: 'Princess Sofia', cursive;
+    margin:0 auto;
+    text-align:center;
+
+}
+
+h1 {
+    font-size:60px;
+}
+
+p {
+    color: #000;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.container {
+    background-color: #FFF;
+    height:100%;
+    border: solid 2px #4c8cf5;
+    margin:10px auto;
+    padding: 10px;
+}
+
+
+.crystal-image {
+    width:150px;
+    height:150px;
+  }
+
+  .afghanite-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .purple-quartz-image {
+    width: 100%;
+    height: auto;
+  }
+  .yellow-quartz-image {
+    width: 100%;
+    height: auto;
+  }
+  .andradite-image {
+    width: 100%;
+    height: auto;
+  }

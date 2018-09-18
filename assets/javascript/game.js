@@ -44,77 +44,31 @@ counter = 0;
 $("#user-score").text(counter);
 }
 
-//get random number for each crystal
-function getRandomValues() {
-  var possibleValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  for (var i = 0; i < 5; i++) {
-      po[Math.floor(Math.random() * 5)];
-  }
-return color;
 
-}
-
-/*//Shuffle an array in random order. This is known as the "Fisher Yates Shuffle" and is found in several places on the internet.
-//Here's the source from which I got this function: https://www.kirupa.com/html5/shuffling_array_js.htm
-Array.prototype.shuffle = function() {
-  var input = this;
-   
-  for (var i = input.length-1; i >=0; i--) {
-   
-      var randomIndex = Math.floor(Math.random()*(i+1)); 
-      var itemAtIndex = input[randomIndex]; 
-       
-      input[randomIndex] = input[i]; 
-      input[i] = itemAtIndex;
-  }
-  return input;
-  //$("#xyz").text(input)
-}
-
-var tempArray = [ "ruby", "sapphire", "diamond", "quartz", "coal" ]
-tempArray.shuffle();
-console.log(tempArray[0])
-
-// and the result is...
-alert(tempArray);  
-console.log(tempArray) ; 
-var numbers = [1, 100, 600, 700, 8, 16];
-numbers.shuffle();
-console.log(numbers[0], numbers[2]);
-var crystalValue1 = numbers[0];
-var crystalValue2 = numbers[1];
-var crystalValue3 = numbers[2];
-$("#pdq").text(crystalValue1, crystalValue2, crystalValue3);
-
-  //get random number for each crystal
-
-function getRandomNumbers() {
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-for (var i = 0; i < 6; i++) {
-    numbers[Math.floor(Math.random() * 9)];
-}
-return numbers;
-console.log(numbers)
-}
-
-/*function getRandomCrystals() {
-  var crystals = [
-    {id: afghanite, src: ../images/Afghanite.jpg, value: numbers[0]}
-    
-   ]
-  
-  for (var i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-  }
-return color;
-
-}*/
 // We begin by expanding our array to include four options.
 //var numberOptions = [10, 5, 3, 7];
-//var numberOptions = [10, 5, 3, 7];
-//var numberOptions = [10, 5, 3, 7];
-//var imageOptions = [../images/Afghanite.jpg, ../images/andradite.jpg, ../images/QuartzPurple.jpg, ../images/QuartzYellow.jpg]
+var numberOptions = [10, 5, 3, 7];
+
+var imageOptions = ["assets/images/Afghanite.jpg", "assets/images/andradite.jpg", "assets/images/QuartzPurple.jpg", "assets/images/QuartzYellow.jpg"]
+
+//function to shuffle arrays. Credit goes to ??
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+     // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+       // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+       // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+      return array;
+  }
+
+  var shuffleValues = shuffle(numberOptions);
+  var shuffleImages = shuffle(imageOptions);
 
 // Next we create a for loop to create crystals for every numberOption.
 for (var i = 0; i < numberOptions.length; i++){
@@ -127,11 +81,11 @@ for (var i = 0; i < numberOptions.length; i++){
     imageCrystal.addClass("crystal-image");
 
     // Each imageCrystal will be given a src link to the crystal image
-    imageCrystal.attr("src", imageOptions[i]);
+    imageCrystal.attr("src", shuffleImages[i]);
 
     // Each imageCrystal will be given a data attribute called data-crystalValue.
     // This data attribute will be set equal to the array value.
-    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+    imageCrystal.attr("data-crystalvalue", shuffleValues[i]);
 
     // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
     $("#crystals").append(imageCrystal);
@@ -141,51 +95,6 @@ for (var i = 0; i < numberOptions.length; i++){
 
 
 
-//create objects - buttons 
-//Assign a different score to each crystal object.
-//Connect each crystal object points attribute and button action to the players score.
-//create counter
-
-
-  // Here we created an on-click event that responds to button clicks of the crystal image.
-  //$(".crystal-image").on("click", function() {
-
-    // Clicking the button triggers an alert message.
-    //alert("You clicked a crystal!");
-
-  //});
-  
- $(".afghanite-image").on("click", function() {
-    alert("You clicked on Afghanite!");
-    counter += pointsA
-    //counter += 5;
-    $("#user-score").text(counter);
-
-    
-  })
-  
-  $(".purple-quartz-image").on("click", function() {
-    alert("You clicked on Purple Quartz!");
-    counter += pointsB;
-    $("#user-score").text(counter);
-
-    
-  })    
-  $(".yellow-quartz-image").on("click", function() {
-    alert("You clicked on Yellow Quartz!");
-    counter += pointsC;
-    $("#user-score").text(counter);
-
-    
-  })
-  $(".andradite-image").on("click", function() {
-    alert("You clicked on Andradite!");
-    counter += pointsD;
-    $("#user-score").text(counter);
-
-    
-  })  
-    // Here we created a counter, we'll be using this to track the user's total.
 
     $(".crystal-image").on("click", function() {
   
@@ -205,11 +114,33 @@ var crystalValue = ($(this).attr("data-crystalvalue"));
     if (counter === targetNumber) {
 
       alert("You win!");
-
-      
+//Add a point to user wins   
     userWins ++;
+//display the new userWins value.
     $('#user-wins').text(userWins);
-     reset();
+//Change score back to 0 and change target number to new random value.
+    reset();
+
+    //function to shuffle arrays. Credit goes to ??
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+     // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+       // Pick a remaining element...
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
+       // And swap it with the current element.
+      temporaryValue = array[currentIndex];
+      array[currentIndex] = array[randomIndex];
+      array[randomIndex] = temporaryValue;
+    }
+      return array;
+  }
+
+  shuffle(shuffleValues);
+  shuffle(shuffleImages);
+  imageCrystal.attr("data-crystalvalue", shuffleValues);
+  imageCrystal.attr("src", shuffleImages);
     }
 
     // Here we added an "else if" condition. If the user's counter ever exceeds the targetNumber...
@@ -222,16 +153,12 @@ var crystalValue = ($(this).attr("data-crystalvalue"));
    $("#user-losses").text(userLosses);
    
    reset();
+   shuffle(shuffleValues);
+  shuffle(shuffleImages);
+  imageCrystal.attr("data-crystalvalue", shuffleValues);
+  imageCrystal.attr("src", shuffleImages);
     }    
   });
     
-//score = score + button points
-//display new score
-//if score === randomNumber player wins, userWins ++. Display userWins. game resets 
-//if score > randomNumber player loses and game starts over. userLosses--. display userLosses. game resets.
-//Create reset function, which does the following:
-  //player score = 0. playerscore is displayed.
-  //user wins resets and displays
-  //new random number is displayed.
-  //new values for crystal objects.
+
 
